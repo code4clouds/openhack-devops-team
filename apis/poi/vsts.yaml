@@ -4,6 +4,10 @@ queue:
   name: Hosted Ubuntu 1604
 variables:
   IMAGE_TAG: 'code4clouds/api-poi'
+pr:
+- master
+- releases/*
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
