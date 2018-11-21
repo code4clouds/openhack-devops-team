@@ -5,6 +5,13 @@ queue:
 variables:
   IMAGE_TAG: 'code4clouds/api-user-java'
 steps:
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    goals: test
+  workingDirectory: apis/trips/tests
+
+
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
