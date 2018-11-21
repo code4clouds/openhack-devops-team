@@ -5,6 +5,26 @@ queue:
 variables:
   IMAGE_TAG: 'code4clouds/api-user'
 steps:
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    workingDir: apis/userprofile
+
+    verbose: false
+
+
+- task: Npm@1
+  displayName: 'npm custom'
+  inputs:
+    command: custom
+
+    workingDir: apis/userprofile
+
+    verbose: false
+
+    customCommand: test
+
+
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
