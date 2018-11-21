@@ -37,3 +37,4 @@ steps:
     command: 'Push an image'
 
     imageName: '$(IMAGE_TAG):$(Build.BuildId)'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
