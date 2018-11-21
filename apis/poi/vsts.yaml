@@ -4,6 +4,10 @@ queue:
   name: Hosted Ubuntu 1604
 variables:
   IMAGE_TAG: 'code4clouds/api-poi'
+pr:
+- master
+- releases/*
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
@@ -36,3 +40,26 @@ steps:
 
     imageName: '$(IMAGE_TAG):$(Build.BuildId)'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: HelmInstaller@0
+  displayName: 'Install Helm 2.11.0'
+  inputs:
+    helmVersion: 2.11.0
+
+    checkLatestHelmVersion: false
+
+    variables:
+
+  IMAGE_TAG: 'code4clouds/api-poi-designer'
+
+- task: HelmDeploy@0
+  displayName: 'helm upgrade'
+  inputs:
+    azureSubscription: DevOpsBostonOpenHack
+    azureResourceGroup: openhackjzw5rg
+    kubernetesCluster: openhackjzw5aks
+    command: upgrade
+    chartType: FilePath
+    chartPath: apis/poi/helm/Chart.yaml
+    overrideValues: 'repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)'
+    valueFile: apis/poi/helm/values.yaml

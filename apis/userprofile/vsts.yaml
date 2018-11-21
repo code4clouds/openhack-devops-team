@@ -4,6 +4,10 @@ queue:
   name: Hosted Ubuntu 1604
 variables:
   IMAGE_TAG: 'code4clouds/api-user'
+pr:
+- master
+- releases/*
+
 steps:
 - task: Npm@1
   displayName: 'npm install'

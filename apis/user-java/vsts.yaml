@@ -4,6 +4,10 @@ queue:
   name: Hosted Ubuntu 1604
 variables:
   IMAGE_TAG: 'code4clouds/api-user-java'
+pr:
+- master
+- releases/*
+
 steps:
 - task: Maven@3
   displayName: 'Maven apis/user-java/pom.xml'
