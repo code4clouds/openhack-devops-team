@@ -5,6 +5,13 @@ queue:
 variables:
   IMAGE_TAG: 'code4clouds/api-trips'
 steps:
+- task: Go@0
+  displayName: 'go test'
+  inputs:
+    command: test
+    workingDirectory: apis/trips/tests
+
+
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
