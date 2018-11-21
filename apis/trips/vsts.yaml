@@ -12,7 +12,7 @@ steps:
 
     azureContainerRegistry: openhackjzw5acr.azurecr.io
 
-    dockerFile: apis/trips/web/Dockerfile
+    dockerFile: apis/trips/Dockerfile
 
     imageName: '$(IMAGE_TAG):$(Build.BuildId)'
 
