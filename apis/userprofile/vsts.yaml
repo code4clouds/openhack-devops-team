@@ -1,0 +1,29 @@
+resources:
+- repo: self
+queue:
+  name: Hosted Ubuntu 1604
+variables:
+  IMAGE_TAG: 'code4clouds/api-user'
+steps:
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    azureSubscriptionEndpoint: DevOpsBostonOpenHack
+
+    azureContainerRegistry: openhackjzw5acr.azurecr.io
+
+    dockerFile: apis/userprofile/Dockerfile
+
+    imageName: '$(IMAGE_TAG):$(Build.BuildId)'
+
+
+- task: Docker@1
+  displayName: 'Push an image'
+  inputs:
+    azureSubscriptionEndpoint: DevOpsBostonOpenHack
+
+    azureContainerRegistry: openhackjzw5acr.azurecr.io
+
+    command: 'Push an image'
+
+    imageName: '$(IMAGE_TAG):$(Build.BuildId)'
