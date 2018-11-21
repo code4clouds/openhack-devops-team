@@ -41,6 +41,7 @@ steps:
     imageName: '$(IMAGE_TAG):$(Build.BuildId)'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
+
 - task: HelmInstaller@0
   displayName: 'Install Helm 2.11.0'
   inputs:
@@ -48,9 +49,6 @@ steps:
 
     checkLatestHelmVersion: false
 
-    variables:
-
-  IMAGE_TAG: 'code4clouds/api-poi-designer'
 
 - task: HelmDeploy@0
   displayName: 'helm upgrade'
