@@ -6,10 +6,13 @@ variables:
   IMAGE_TAG: 'code4clouds/api-user-java'
 steps:
 - task: Maven@3
-  displayName: 'Maven pom.xml'
+  displayName: 'Maven apis/user-java/pom.xml'
   inputs:
+    mavenPomFile: 'apis/user-java/pom.xml'
+
     goals: test
-  workingDirectory: apis/trips/tests
+
+
 
 
 - task: Docker@1
