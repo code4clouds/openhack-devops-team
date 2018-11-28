@@ -43,9 +43,9 @@ steps:
 
 
 - task: HelmInstaller@0
-  displayName: 'Install Helm 2.10.0'
+  displayName: 'Install Helm 2.11.0'
   inputs:
-    helmVersion: 2.10.0
+    helmVersion: 2.11.0
 
     checkLatestHelmVersion: false
 
