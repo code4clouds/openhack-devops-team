@@ -57,5 +57,8 @@ steps:
     azureResourceGroup: openhackjzw5rg
     kubernetesCluster: openhackjzw5aks
     command: upgrade
-    chartName: 'api-poi'
+    chartType: FilePath
+    chartPath: apis/poi/helm/Chart.yaml
     overrideValues: 'repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)'
+    valueFile: apis/poi/helm/values.yaml
+    waitForExecution: false
