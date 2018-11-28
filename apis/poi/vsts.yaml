@@ -59,8 +59,8 @@ steps:
     command: upgrade
     chartType: FilePath
     chartPath: apis/poi/helm/Chart.yaml
-    releaseName: 'api-poi'
-    overrideValues: 'repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)'
+    releaseName: api-poi
+    overrideValues: repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)
     valueFile: apis/poi/helm/values.yaml
     waitForExecution: false
     
