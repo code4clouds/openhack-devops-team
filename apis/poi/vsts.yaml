@@ -58,9 +58,10 @@ steps:
     kubernetesCluster: openhackjzw5aks
     command: upgrade
     chartType: FilePath
-    chartPath: apis/poi/helm/
-    releaseName: api-poi
-    overrideValues: repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)
+    chartPath: apis/poi/helm
+    releaseName: 'api-poi'
+    overrideValues: 'repository.image=openhackjzw5acr/$(IMAGE_TAG),repository.tag=$(Build.BuildId)'
     valueFile: apis/poi/helm/values.yaml
     waitForExecution: false
+    arguments: '--dry-run'
     
